@@ -1,0 +1,3 @@
+pip install SpeechRecognition==3.10.0
+vosk===0.3.45
+pyAudio===0.2.13
