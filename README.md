@@ -6,5 +6,7 @@ foco:
   fácil de se cumunicar.
 
 
-  técnolgias:
-    reconhecimento de voz:(vosk para reconhecimento offiline)
+ Técnologias:
+    Reconhecimento de voz(Vosk para reconhecimento offline)
+    sintase de voz:(pyttsx3)
+    Algum de tipo IA: Commands,NLU(classificação de texto)

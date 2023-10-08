@@ -1,3 +1,8 @@
 pip install SpeechRecognition==3.10.0
 vosk===0.3.45
 pyAudio===0.2.13
+pip install pyttsx3
+
+pip install tensorflow
+
+caso de algum erro na hora de baixar o tensorflow: reg add HKLM\SYSTEM\CurrentControlSet\Control\FileSystem /v LongPathsEnabled /t REG_DWORD /d 1 /f
