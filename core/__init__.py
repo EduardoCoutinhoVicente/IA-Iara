@@ -1,5 +1,5 @@
 import datetime
-
+import locale
 
 class SystemInfo:
     def __init__(): 
@@ -13,6 +13,7 @@ class SystemInfo:
     
     @staticmethod
     def get_date():
+        locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
         now = datetime.datetime.now()
-        answer = 'hoje é {} de {} de {}'.format(now.day, now.strftime("%B"), now.year)
-        return answer
+        resposta = 'Hoje é dia {} de {} de {}'.format(now.day, now.strftime("%B"), now.year)
+        return resposta
