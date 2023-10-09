@@ -48,12 +48,16 @@ for i, inp in enumerate(inputs):
 
 labels = set(outputs)
 
+fwrite = open('labels.txt','w',encoding='utf-8')
+
 label2idx = {}
 idx2label = {}
 
 for k, label in enumerate(labels):
     label2idx[label] = k
     idx2label[k] = label
+    fwrite.write(label + '\n')
+fwrite.close()
     
 output_data=[]
 
@@ -74,10 +78,13 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc']
 
 model.fit(input_data,output_data,epochs=128)
 
-#Vain classificar texto em uma entidade
+#Salvar model
+model.save('model.h5')#h5 e um tipode arquivo
+
+#Vai classificar texto em uma entidade
 def classify(text):
     #Criar um array de entrada(arrat de zeros)
-    x = np.zeros((1, 48, 256), dtype='float32')
+    x = np.zeros((1, 24, 256), dtype='float32')
     
     # Preencher o array com dados do texto
     for k, ch in enumerate(bytes(text.encode('utf-8'))):
@@ -88,8 +95,8 @@ def classify(text):
     idx = out.argmax()
     print(idx2label[idx])
     
-while True:
-    text = input("Digite algo: ")
-    classify(text)
+#while True:
+#   text = input("Digite algo: ")
+#    classify(text)
 # print(inputs)
 # print(outputs)
