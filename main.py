@@ -15,7 +15,7 @@ engine.setProperty('voice', voices[-3].id)
 def speak(text):
     engine.say(text)
     engine.runAndWait()
-
+#nada
 # Carregar o modelo de reconhecimento de fala Vosk
 model = Model('model')
 rec = KaldiRecognizer(model, 16000)
