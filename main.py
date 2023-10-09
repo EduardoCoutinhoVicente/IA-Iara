@@ -57,9 +57,13 @@ try:
                 entity = classify(text)
                 
                 if entity == 'time\\getTime':
-                    speak(core.SystemInfo.get_time())
+                    speak(core.SystemInfo.get_time())  
+                elif entity == 'time\getDate':
+                    speak(core.SystemInfo.get_date())
 
-                print('Text: {} Entity: {}'.format(text, entity))#mostra o texto ouvido
+                print('Text: {} Entity: {}'.format(text, 
+                entity))#mostra o texto ouvido
+
                 #speak(text)#fala o texto ouvido
 
 
