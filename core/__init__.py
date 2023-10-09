@@ -11,6 +11,6 @@ class SystemInfo:
         answer ='São {} horas e {} minutos.'.format(now.hour, now.minute)
         return answer
     
-    @staticmethod
-    def get_date():
+    #@staticmethod
+    #def get_date():
         

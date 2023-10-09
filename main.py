@@ -10,12 +10,14 @@ engine = pyttsx3.init()
 
 # Configuração da voz (voz padrão ou outra, dependendo do sistema)
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[-3].id)
+#engine.setProperty('voice', voices[-3].id)
+
+
 
 def speak(text):
     engine.say(text)
     engine.runAndWait()
-#nada
+
 # Carregar o modelo de reconhecimento de fala Vosk
 model = Model('model')
 rec = KaldiRecognizer(model, 16000)
