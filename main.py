@@ -13,10 +13,29 @@ voices = engine.getProperty('voices')
 #engine.setProperty('voice', voices[-3].id)
 
 
-
 def speak(text):
     engine.say(text)
     engine.runAndWait()
+
+
+def evaluate(text):
+    # Reconhecer entidade do texto
+    entity = classify(text)
+    if entity == 'time\\getTime':
+        speak(core.SystemInfo.get_time())  
+    elif entity == 'time\getDate':
+        speak(core.SystemInfo.get_date())
+
+    # abrir programas
+    elif entity == 'open\notepad':
+         speak('Abrindo o bloco de notas')
+         os.system('notepad.exe ')
+
+    print('Text: {} Entity: {}'.format(text, entity))#mostra o texto ouvido
+
+    #speak(text)#fala o texto ouvido
+
+
 
 # Carregar o modelo de reconhecimento de fala Vosk
 model = Model('model')
@@ -50,22 +69,10 @@ try:
             # Imprimir o texto reconhecido e reproduzi-lo em voz
             if result is not None:
                 text = result['text']
-
+                evaluate(text)
         
                 
-                # Reconhecer entidade do texto
-                entity = classify(text)
-                
-                if entity == 'time\\getTime':
-                    speak(core.SystemInfo.get_time())  
-                elif entity == 'time\getDate':
-                    speak(core.SystemInfo.get_date())
-
-                print('Text: {} Entity: {}'.format(text, 
-                entity))#mostra o texto ouvido
-
-                #speak(text)#fala o texto ouvido
-
+            
 
 except KeyboardInterrupt:
     print("Programa encerrado manualmente.")

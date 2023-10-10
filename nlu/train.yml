@@ -32,7 +32,11 @@ commands:
     action: getWeather   
   #Open
   - commands:
-    input: Abrir google
+    input: Abrir bloco de notas
     entity: open
-    action: google
+    action: notepad
+  - commands:
+    input: Abrir bloco de notas
+    entity: open
+    action: notepad
  
