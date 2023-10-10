@@ -12,4 +12,4 @@ foco:
     Algum de tipo IA: Commands,NLU(classificação de texto)
 
     Funções da Assistente:
-      Abrir programas
+      Abrir e fechar programas 

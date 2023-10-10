@@ -9,7 +9,7 @@ data = yaml.safe_load(open('nlu\\train.yml', 'r', encoding='utf-8').read())
 # vai armazenar as entradas ee saidas
 inputs, outputs = [], []
 
-for command in data['commands']:
+for command in data['command']:
     inputs.append(command['input'].lower())
     outputs.append('{}|{}'.format(command['entity'], command['action']))
 
@@ -76,7 +76,7 @@ model.add(Dense(len(output_data), activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc'])
 
 
-model.fit(input_data,output_data,epochs=128)
+model.fit(input_data,output_data,epochs=512)
 
 #Salvar model
 model.save('model.h5')#h5 e um tipode arquivo

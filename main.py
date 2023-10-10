@@ -1,4 +1,4 @@
-import os
+import psutil,os
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import pyttsx3
@@ -18,19 +18,36 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+def close_program(name):
+    for process in (process for process in psutil.process_iter() if process.name()==name):
+        process.kill()
+
 
 def evaluate(text):
     # Reconhecer entidade do texto
     entity = classify(text)
+
     if entity == 'time|getTime':
         speak(core.SystemInfo.get_time())  
     elif entity == 'time|getDate':
         speak(core.SystemInfo.get_date())
 
     # abrir programas
-    elif entity == 'open|notepad':
+    elif entity == 'notepad|open':
          speak('Abrindo o bloco de notas')
-         os.system('notepad.exe ')
+         os.system('notepad.exe')
+
+    elif entity == 'chrome|open':
+         speak('Abrindo o google chrome ')
+         os.system('"C:/Program Files/Google/Chrome/Application/chrome.exe" ')     
+
+    #fechar programas
+    elif entity == 'notepad|close':
+         speak('Fechando o bloco de notas')
+         close_program('notepad.exe')
+
+    elif entity ==  '|':     
+        speak('não entendi boco')
 
     print('Text: {} Entity: {}'.format(text, entity))#mostra o texto ouvido
 
