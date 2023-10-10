@@ -1,4 +1,4 @@
-Weather\getWeather
-time\getTime
-open\notepad
-time\getDate
+open|notepad
+time|getDate
+time|getTime
+Weather|getWeather

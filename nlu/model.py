@@ -11,7 +11,7 @@ inputs, outputs = [], []
 
 for command in data['commands']:
     inputs.append(command['input'].lower())
-    outputs.append('{}\{}'.format(command['entity'], command['action']))
+    outputs.append('{}|{}'.format(command['entity'], command['action']))
 
 
 # Processart texto: palavras, caracteres, bytes, sub-palavras
@@ -84,7 +84,7 @@ model.save('model.h5')#h5 e um tipode arquivo
 #Vai classificar texto em uma entidade
 def classify(text):
     #Criar um array de entrada(arrat de zeros)
-    x = np.zeros((1, 24, 256), dtype='float32')
+    x = np.zeros((1, 50, 256), dtype='float32')
     
     # Preencher o array com dados do texto
     for k, ch in enumerate(bytes(text.encode('utf-8'))):
