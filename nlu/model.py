@@ -79,7 +79,7 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc']
 model.fit(input_data,output_data,epochs=512)
 
 #Salvar model
-model.save('model.h5')#h5 e um tipode arquivo
+model.save('model.keras')#keras e um tipode arquivo
 
 #Vai classificar texto em uma entidade
 def classify(text):

@@ -39,15 +39,7 @@ command:
     input: Abrir google
     entity: chrome
     action: open 
-    #close
-  - command:
-    input: fechar o google
-    entity: chrome
-    action: close
-  - command:
-    input: fechar o bloco de notas
-    entity: notepad  
-    action: close
+  
   - command:
     input: nome
     entity:  nome 

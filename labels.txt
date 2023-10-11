@@ -1,8 +1,6 @@
-time|getDate
-time|getTime
 chrome|open
-notepad|open
 Weather|getWeather
-chrome|close
+time|getTime
 nome|nome
-notepad|close
+notepad|open
+time|getDate

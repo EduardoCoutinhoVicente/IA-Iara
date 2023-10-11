@@ -1,7 +1,7 @@
 from tensorflow.keras.models import load_model
 import numpy as np#para criar nossoas dados
 
-model = load_model('model.h5')
+model = load_model('model.keras')
 
 labels = open('labels.txt','r',encoding='utf-8').read().split('\n')
 

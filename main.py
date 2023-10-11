@@ -1,27 +1,22 @@
-import psutil,os
+import psutil
+import os
 from vosk import Model, KaldiRecognizer
 import pyaudio
-import pyttsx3
+import pyttsx4
 import json
+from nlu.classifiler import classify  # Supondo que a função classify seja definida corretamente em outro módulo
 import core
-from nlu.classifiler import classify
 
 # Sintaxe de fala
-engine = pyttsx3.init()
-
-# Configuração da voz (voz padrão ou outra, dependendo do sistema)
-voices = engine.getProperty('voices')
-#engine.setProperty('voice', voices[-3].id)
-
+engine = pyttsx4.init()
 
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
 def close_program(name):
-    for process in (process for process in psutil.process_iter() if process.name()==name):
-        process.kill()
-
+    for process in (process for process in psutil.process_iter(attrs=['name']) if process.info['name'] == name):
+        process.terminate()
 
 def evaluate(text):
     # Reconhecer entidade do texto
@@ -32,28 +27,19 @@ def evaluate(text):
     elif entity == 'time|getDate':
         speak(core.SystemInfo.get_date())
 
-    # abrir programas
+    # Abrir programas
     elif entity == 'notepad|open':
-         speak('Abrindo o bloco de notas')
-         os.system('notepad.exe')
+        speak('Abrindo o bloco de notas')
+        os.system('notepad.exe')
 
-    elif entity == 'chrome|open':
-         speak('Abrindo o google chrome ')
-         os.system('"C:/Program Files/Google/Chrome/Application/chrome.exe" ')     
+    #elif entity == 'chrome|open':
+    #    speak('Abrindo o Google Chrome')
+    #    os.system('"C:/Program Files/Google/Chrome/Application/chrome.exe"')     
 
-    #fechar programas
-    elif entity == 'notepad|close':
-         speak('Fechando o bloco de notas')
-         close_program('notepad.exe')
+    elif entity == '|':     
+        speak('Não entendi')
 
-    elif entity ==  '|':     
-        speak('não entendi boco')
-
-    print('Text: {} Entity: {}'.format(text, entity))#mostra o texto ouvido
-
-    #speak(text)#fala o texto ouvido
-
-
+    print('Text: {} Entity: {}'.format(text, entity))
 
 # Carregar o modelo de reconhecimento de fala Vosk
 model = Model('model')
@@ -64,40 +50,25 @@ p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=2048)
 stream.start_stream()
 
-#tratamento de erros:importante para lidaar ccom  exeções que
-#possam ocorrer na execução, como erros ao iniciar o stream
-#  de áudio ou erros de reconhecimento de fala. Isso ajudará 
-# a tornar o código mais robusto.
 try:
-    #Loop do reconhecimento de fala 
     while True:
-        #Ajustando o tamanho do chunk(fragmento), que e usado para ler 
-        #o áudiodeixar entre 1024 ou 2048
-        data = stream.read(2048)# Lê um pedaço (chunk) de áudio do dispositivo de entrada
-        
-        # Verificar se não há mais dados de áudio para ler (fim do fluxo)
+        data = stream.read(2048)
+
         if len(data) == 0:
             break
 
-        # Enviar o chunk para o reconhecimento de fala
         if rec.AcceptWaveform(data):
             result = rec.Result()
             result = json.loads(result)
 
-            # Imprimir o texto reconhecido e reproduzi-lo em voz
             if result is not None:
                 text = result['text']
                 evaluate(text)
-        
-                
-            
-
 except KeyboardInterrupt:
     print("Programa encerrado manualmente.")
 except Exception as e:
     print(f"Ocorreu um erro: {e}")
 finally:
-    # Encerrar e liberar recursos quando o programa terminar
     stream.stop_stream()
     stream.close()
     p.terminate()
