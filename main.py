@@ -31,12 +31,16 @@ def evaluate(text):
     elif entity == 'notepad|open':
         speak('Abrindo o bloco de notas')
         os.system('notepad.exe')
+        
+    # Abrir programas
+    elif entity == 'ola|gethello':
+        speak(core.SystemInfo.gethello())    
 
     #elif entity == 'chrome|open':
     #    speak('Abrindo o Google Chrome')
     #    os.system('"C:/Program Files/Google/Chrome/Application/chrome.exe"')     
 
-    elif entity == '|':     
+    elif entity == 'nome|nome':     
         speak('Não entendi')
 
     print('Text: {} Entity: {}'.format(text, entity))

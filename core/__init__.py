@@ -17,3 +17,8 @@ class SystemInfo:
         now = datetime.datetime.now()
         resposta = 'Hoje é dia {} de {} de {}'.format(now.day, now.strftime("%B"), now.year)
         return resposta
+    
+    @staticmethod
+    def gethello():
+        resposta = 'Olá, meu nome é Iara, como posso te ajudar' 
+        return resposta

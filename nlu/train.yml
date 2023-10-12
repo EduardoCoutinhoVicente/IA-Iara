@@ -21,6 +21,10 @@ command:
     input: Data de hoje.
     entity: time
     action: getDate  
+  - command:
+    input: que dia e hoje?.
+    entity: time
+    action: getDate   
   # Tempo
   - command:
     input: Previsão do tempo
@@ -35,12 +39,24 @@ command:
     input: Abrir bloco de notas
     entity: notepad
     action: open
-  - command:
-    input: Abrir google
-    entity: chrome
-    action: open 
+# - command:
+#    input: Abrir google
+#    entity: chrome
+#    action: open 
   
+  #apresentação
   - command:
-    input: nome
+    input: oi
+    entity: ola
+    action: gethello
+  - command:
+    input: olá
+    entity: ola
+    action: gethello  
+
+
+  #nada
+  - command:
+    input: a b abistrato
     entity:  nome 
     action:  nome  

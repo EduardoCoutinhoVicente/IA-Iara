@@ -1,6 +1,6 @@
-chrome|open
+ola|gethello
 Weather|getWeather
-time|getTime
 nome|nome
-notepad|open
 time|getDate
+time|getTime
+notepad|open
