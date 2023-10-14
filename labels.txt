@@ -1,6 +1,8 @@
-ola|gethello
 Weather|getWeather
-nome|nome
-time|getDate
-time|getTime
 notepad|open
+time|getDate
+ola|gethello
+cria|getlingua
+nome|nome
+não_entendido|responder_não_entendido
+time|getTime

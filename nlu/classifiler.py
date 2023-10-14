@@ -4,8 +4,12 @@ import numpy as np
 
 
 # Carregando o modelo pré-treinado
-model = load_model('model.keras')
-
+try:
+    model = load_model('model.keras')
+except Exception as e:
+    print("Erro ao carregar o modelo:", e)
+    model = None
+    
 # Lendo as etiquetas das entidades a partir do arquivo de etiquetas
 labels = open('labels.txt', 'r', encoding='utf-8').read().split('\n')
 
@@ -20,10 +24,11 @@ for k, label in enumerate(labels):
 # Função para classificar o texto em uma entidade
 def classify(text):
     # Criar um array de entrada (array de zeros)
-    x = np.zeros((1, 24, 256), dtype='float32')
-    
+    x = np.zeros((1, 58, 256), dtype='float32')
+
     # Preencher o array com dados do texto
-    for k, ch in enumerate(bytes(text.encode('utf-8'))):
+    for k, ch in enumerate(bytes(text.encode('utf-8'))[:58]):
+
         x[0, k, int(ch)] = 1.0
         
     # Fazer a previsão

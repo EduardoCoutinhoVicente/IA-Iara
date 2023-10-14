@@ -53,10 +53,43 @@ command:
     input: olá
     entity: ola
     action: gethello  
-
+  - command:
+    input: olá, Boa tarde
+    entity: ola
+    action: gethello
+  - command:
+    input: olá, Boa noite
+    entity: ola
+    action: gethello    
+  - command:
+    input: olá, bom dia
+    entity: ola
+    action: gethello 
+  #criação  
+  - command:
+    input: quem são seus criadores 
+    entity: ola
+    action: gethello 
+  - command:
+    input: em qual linguagem de programação você foi desenvolvida?
+    entity: cria
+    action: getlingua 
 
   #nada
   - command:
     input: a b abistrato
     entity:  nome 
     action:  nome  
+
+
+  - command:
+    input: Não entendi
+    entity: não_entendido
+    action: responder_não_entendido
+
+#elogios
+- command:
+    input: você e muito bonita 
+    entity: bonita
+    action: getbonita
+    
