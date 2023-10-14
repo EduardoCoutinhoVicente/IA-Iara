@@ -22,7 +22,7 @@ command:
     entity: time
     action: getDate  
   - command:
-    input: que dia e hoje?.
+    input: que dia é hoje?
     entity: time
     action: getDate   
   # Tempo
@@ -69,27 +69,26 @@ command:
   - command:
     input: quem são seus criadores 
     entity: ola
-    action: gethello 
+    action: gethello
+    # 
   - command:
     input: em qual linguagem de programação você foi desenvolvida?
     entity: cria
     action: getlingua 
+  - command:
+    input: em qual linguagem de programação você foi feita
+    entity: cria
+    action: getlingua   
 
   #nada
   - command:
-    input: a b abistrato
+    input: nome
     entity:  nome 
     action:  nome  
 
-
-  - command:
-    input: Não entendi
-    entity: não_entendido
-    action: responder_não_entendido
-
 #elogios
-- command:
-    input: você e muito bonita 
+  - command:
+    input: você é muito bonita 
     entity: bonita
     action: getbonita
     

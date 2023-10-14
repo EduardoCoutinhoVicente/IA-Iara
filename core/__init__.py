@@ -35,7 +35,15 @@ class SystemInfo:
     @staticmethod
     def getlingua():
         """
-        Retorna uma mensagem de saudação.
+        Retorna uma mensagem sobre a linguagem que ela foi feita.
         """
-        resposta = 'Eu fui desenvolvida com a linguagem python' # Retorna uma mensagem de saudação.
+        resposta = 'Eu fui desenvolvida com a linguagem python'  
+        return resposta
+    
+    @staticmethod
+    def getbonita():
+        """
+        Retorna uma mensagem sobre ela ser bonita
+        """
+        resposta = 'obrigada, você e mais ainda!!' # Retorna uma mensagem de agardecimento.
         return resposta

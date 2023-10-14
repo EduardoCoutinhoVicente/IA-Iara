@@ -32,15 +32,19 @@ def evaluate(text):#Você pode adicionar as ações que deseja que o programa ex
     # Abrir programas
     elif entity == 'notepad|open':
         speak('Abrindo o bloco de notas')
-        os.system('notepad.exe')
+        os.system('notepad.exe') 
         
-    # Verifica se voce "ola" Caso reconheça ele lhe respondera com uma saudação.
-    elif entity == 'cria|getlingua':
-        speak(core.SystemInfo.getlingua())    
+    # responde a um elogio
+    elif entity == 'bonita|getbonita':
+        speak(core.SystemInfo.getbonita())       
         
     # Verifica se voce "ola" Caso reconheça ele lhe respondera com uma saudação.
     elif entity == 'ola|gethello':
         speak(core.SystemInfo.gethello())
+        
+    # responde a pergunda de qual linguagem ela foi feita
+    elif entity == 'cria|getlingua':
+        speak(core.SystemInfo.getlingua())     
     
     elif entity == 'nome|nome':     
         speak('Não entendi')
