@@ -45,5 +45,5 @@ class SystemInfo:
         """
         Retorna uma mensagem sobre ela ser bonita
         """
-        resposta = 'obrigada, você e mais ainda!!' # Retorna uma mensagem de agardecimento.
+        resposta = 'obrigada, você é mais ainda!!' # Retorna uma mensagem de agardecimento.
         return resposta

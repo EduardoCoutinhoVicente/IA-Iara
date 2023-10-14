@@ -1,8 +1,8 @@
-cria|getlingua
-Weather|getWeather
 nome|nome
-notepad|open
 ola|gethello
-bonita|getbonita
 time|getTime
+cria|getlingua
+bonita|getbonita
+Weather|getWeather
+notepad|open
 time|getDate
